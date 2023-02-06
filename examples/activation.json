@@ -1,0 +1,93 @@
+
+{
+
+    "stac_version": "1.0.0",
+    "stac_extensions": [
+        "https://stac-extensions.github.io/version/v1.0.0/schema.json",
+        "https://terradue.github.io/disaster/v1.0.0/schema.json"
+    ],
+    "type": "Feature",
+    "id": "act-795",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            46.654808320854784,
+            -18.14239500101962
+        ]
+    },
+    "properties": {
+        "disaster:class": "Activation",
+        "updated": "2023-02-06T11:02:33.5273461Z",
+        "title": "[Act-795/Call-917] Tropical Storm Cheneso in Madagascar",
+        "disaster:activation_id": 795,
+        "disaster:call_ids": [
+            917
+        ],
+        "disaster:type": [
+            "StormHurricaneUrban",
+            "FloodFlash",
+            "Landslide"
+        ],
+        "disaster:region": [
+            "Madagascar"
+        ],
+        "disaster:country": "MDG",
+        "datetime": "2023-01-24T09:55:00Z",
+        "created": "2023-01-24T09:55:00Z",
+        "disaster:activation_status": "open",
+        "description": "![](\"https://store.terradue.com/api/cos2/various/icons/cyclone.png\")\n\n## \[Act-795/Call-917\] Tropical Storm Cheneso in Madagascar\n\n**24/01/2023 09:55:00**\n\n\[Link on disastercharter.org\](https://disasterscharter.org/web/guest/activations/-/article/storm-hurricane-urban-in-madagascar-activation-795-)\n\n\n\n Tropical Storm Cheneso reached the North-Eastern Coast of Madagascar, in the Sava Region, on morning of 19 January 2023.\n\n\n\n Average winds of 90 km/h and wind gusts of up to 120 km/h were recorded as the storm headed South-West along the island in addition to reports of heavy rainfall particularly in the North which triggered flash flooding and, consequently, multiple landslides.\n\n\n\n Approximately 700 homes have been damaged, affecting over 2000 people, along with one fatality and one missing person although the number of affected is expected to rise as more reports and damage assessments come in from rural areas.\n\n\n\n The Diana, Sava and Anakanjirofo regions along the North-Eastern coasts have been issued with a red alert, which implies that there is an imminent threat of further torrential rainfall and extreme flooding. Cheneso is Madagascar's first tropical storm of the current cyclone season.\n\n\n\n**Related News and Resources:**\n\n\n\n* \[Copernicus EMS Activation for Tropical Storm Cheneso in Madagascar\](https://emergency.copernicus.eu/mapping/list-of-components/EMSR645)",
+        "version": "16"
+    },
+    "bbox": [
+        46.654808320854784,
+        -18.14239500101962,
+        46.654808320854784,
+        -18.14239500101962
+    ],
+    "assets": {
+        "icon": {
+            "type": "image/png",
+            "roles": [
+                "thumbnail"
+            ],
+            "title": "placemark",
+            "href": "https://store.terradue.com/api/cos2/various/icons/cyclone.png"
+        },
+        "area1": {
+            "type": "application/vnd.google-earth.kml+xml",
+            "roles": [
+                "area",
+                "metadata"
+            ],
+            "title": "Area 1",
+            "href": "https://disasterscharter.org/cos-api/api/kml/cexp/917"
+        }
+    },
+    "links": [
+        {
+            "type": "text/html",
+            "rel": "about",
+            "title": "Disaster Charter Web Page",
+            "href": "https://disasterscharter.org/web/guest/activations/-/article/storm-hurricane-urban-in-madagascar-activation-795-"
+        },
+        {
+            "type": "application/geo+json",
+            "rel": "self",
+            "title": "[Act-795/Call-917] Tropical Storm Cheneso in Madagascar",
+            "href": "https://supervisor.disasterscharter.org/api/activations/act-795.json"
+        },
+        {
+            "type": "application/json",
+            "rel": "root",
+            "title": "Root Catalog",
+            "href": "https://supervisor.disasterscharter.org/api/catalog.json"
+        },
+        {
+            "rel": "collection",
+            "title": "All Activations",
+            "href": "https://supervisor.disasterscharter.org/api/activations/catalog.json"
+        }
+    ],
+    "collection": "catalog"
+
+}

@@ -7,11 +7,15 @@
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
 - **Owner**: @emmanuelmathot
 
-This document explains the Disasters Charter Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
+This document explains the Disasters Charter Extension to the 
+[SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
 
 ![The International Charter Space and Major Disasters](images/charter_logo.png)
 
-[The International Charter Space and Major Disasters](https://disasterscharter.org) is a non-binding charter which provides for the charitable and humanitarian acquisition and transmission of satellite data to relief organizations in the event of major disasters.
+[The International Charter Space and Major Disasters](https://disasterscharter.org) is a non-binding
+charter which provides for the charitable and humanitarian acquisition and transmission of satellite
+data to relief organizations in the event of major disasters.
+
 This extension provides with:
 
 - Additional fields for common disaster properties such as type (e.g. cyclone, earthquake, flooding...).
@@ -73,14 +77,15 @@ The fields in the table below can be used in these parts of STAC documents:
 - [ ] Assets (for both Collections and Items, incl. Item Asset Definitions in Collections)
 - [ ] Links
 
-| Field Name             | Type      | Description                                                                                                      |
-| ---------------------- | --------- | ---------------------------------------------------------------------------------------------------------------- |
-| disaster:call_ids      | \[int]    | Identifiers of the related [Call(s)](#call)                                                                      |
-| disaster:activation_id | int       | Identifier of the related [Activation](#activation)                                                              |
-| disaster:types         | \[string] | Disaster Types (one of the [category](#disastertypes))                                                           |
-| disaster:class         | string    | Identifier of the object described in the item or collection                                                     |
-| disaster:country       | string    | Related Country identifier based on the ISO-3166 standard. In particular, the Alpha-3 representation. (e.g. BEL) |
-| disaster:regions       | \[string] | Free text list identifying regions                                                                               |
+| Field Name                 | Type      | Description                                                                                                      |
+| -------------------------- | --------- | ---------------------------------------------------------------------------------------------------------------- |
+| disaster:call_ids          | \[int]    | Identifiers of the related [Call(s)](#call)                                                                      |
+| disaster:activation_id     | int       | Identifier of the related [Activation](#activation)                                                              |
+| disaster:types             | \[string] | Disaster Types (one of the [category](#disastertypes))                                                           |
+| disaster:class             | string    | Identifier of the object described in the item or collection                                                     |
+| disaster:country           | string    | Related Country identifier based on the ISO-3166 standard. In particular, the Alpha-3 representation. (e.g. BEL) |
+| disaster:regions           | \[string] | Free text list identifying regions                                                                               |
+| disaster:activation_status | string    | Activation status. One of `open`, `closed`, `archived`.                                                          |
 
 ### Additional Field Information
 
@@ -98,7 +103,7 @@ Here is the list of accepted types:
 | `flood_flash`           | Flash [Floods](https://disasterscharter.org/web/guest/disaster-types/-/article/floods) occurs when storms bring large quantities of precipitation in a matter of minutes.                                                                                                                                                                |
 | `ice`                   | [Ice](https://disasterscharter.org/web/guest/disaster-types/-/article/ice) on the surface of water or in compacted snow makes for treacherous conditions and can result in injuries if people slip and fall. Water sources may freeze, cutting off access for residents to clean water or heat.                                          |
 | `snow_hazard`           | [Snow Hazard](https://disasterscharter.org/web/guest/disaster-types/-/article/ice) occurs when temperatures drop below the freezing point, and there is sufficient water in clouds. Snow storms can quickly cause disruption to inhabited areas if the ground temperature is cold enough for the snow to settle.                         |
-| `tsunami`               | Tsunamis are seismic [sea waves](https://disasterscharter.org/web/guest/disaster-types/-/article/ocean-wave) and typically occur as a result of underwater earthquakes or volcanic eruptions.                                                                                                                                            | `landslide` | [Landslides](https://disasterscharter.org/web/guest/disaster-types/-/article/landslides) occur when ground on slopes becomes unstable. The unstable ground collapses and flows down the side of a hill or mountain, and can consist of earth, rocks, mud and any debris which may be caught in its wake. |
+| `tsunami`               | Tsunamis are seismic [sea waves](https://disasterscharter.org/web/guest/disaster-types/-/article/ocean-wave) and typically occur as a result of underwater earthquakes or volcanic eruptions.                                                                                                                                            | `landslide` | [Landslides](https://disasterscharter.org/web/guest/disaster-types/-/article/landslides) occur when ground on slopes becomes unstable. The unstable ground collapses and flows down the side of a hill or mountain, and can consist of earth, rocks, mud and any debris which may be caught in its wake.
 | `storm_hurricane_rural` | Tropical [cyclones](https://disasterscharter.org/web/guest/disaster-types/-/article/cyclones) are weather phenomena which form over the Atlantic and northeast Pacific Oceans through the release of energy generated by evaporation and saturation of water on the ocean's surface. This category affecting urban or rural area.        |
 | `storm_hurricane_urban` | Tropical [cyclones](https://disasterscharter.org/web/guest/disaster-types/-/article/cyclones) are weather phenomena which form over the Atlantic and northeast Pacific Oceans through the release of energy generated by evaporation and saturation of water on the ocean's surface. They are categorized affecting urban or rural area. |
 | `oil_spill`             | [Oil spills](https://disasterscharter.org/web/guest/disaster-types/-/article/oil-spills) occur when petroleum oil is released into the ocean following accidents, such as vessels crashing or damage and problems with oil platforms and drilling.                                                                                       |
@@ -123,6 +128,7 @@ The following types should be used as applicable `rel` types in the
 
 | Type         | Description                                                                                                                                           |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| about        | This link points to the disasterscharter.org page of the disaster                                                                                     |
 | area         | This link points to an area Item from an activation Item.                                                                                             |
 | derived_from | This link should be used in all [Value Added Product](#value-added-product) to identify one or more [Acquisition(s)](#acquisition) used to create it. |
 

@@ -8,7 +8,7 @@
     "https://stac-extensions.github.io/sar/v1.0.0/schema.json",
     "https://stac-extensions.github.io/sat/v1.0.0/schema.json",
     "https://stac-extensions.github.io/view/v1.0.0/schema.json",
-    "https://terradue.github.io/disaster/v1.0.0/schema.json"
+    "https://terradue.github.io/stac-extensions-disaster/v1.0.0/schema.json"
   ],
   "links": [],
   "type": "Collection",

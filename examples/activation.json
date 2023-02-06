@@ -2,7 +2,7 @@
   "stac_version": "1.0.0",
   "stac_extensions": [
     "https://stac-extensions.github.io/version/v1.0.0/schema.json",
-    "https://terradue.github.io/disaster/v1.0.0/schema.json"
+    "https://terradue.github.io/stac-extensions-disaster/v1.0.0/schema.json"
   ],
   "type": "Feature",
   "id": "act-744",

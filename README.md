@@ -1,53 +1,120 @@
-# Template Extension Specification
+# Disasters Charter Extension Specification
 
-- **Title:** Template
-- **Identifier:** <https://stac-extensions.github.io/template/v1.0.0/schema.json>
-- **Field Name Prefix:** template
+- **Title:** Disasters Charter
+- **Identifier:** <https://terradue.github.io/disaster/v1.0.0/schema.json>
+- **Field Name Prefix:** disaster
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
-- **Owner**: @your-gh-handles @person2
+- **Owner**: @emmanuelmathot
 
-This document explains the Template Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
-This is the place to add a short introduction.
+This document explains the Disasters Charter Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
+
+![The International Charter Space and Major Disasters](images/charter_logo.png)
+
+[The International Charter Space and Major Disasters](https://disasterscharter.org) is a non-binding charter which provides for the charitable and humanitarian acquisition and transmission of satellite data to relief organizations in the event of major disasters.
+This extension provides with:
+
+- Additional fields for common disaster properties such as type (e.g. cyclone, earthquake, flooding...).
+- Additional fields for specific metadata for the charter such as the call or activation identifier.
+- Best practises to describe several objects used in the Disasters Charter (Activation, Disaster Area, Acquisition...).
+
+The extension is used in the [Charter Processing Environment](https://cpe.disasterscharter.org) project to catalog all the objects.
 
 - Examples:
-  - [Item example](examples/item.json): Shows the basic usage of the extension in a STAC Item
-  - [Collection example](examples/collection.json): Shows the basic usage of the extension in a STAC Collection
+  - [Activation example](examples/activation.json): Shows the usage of the extension to describe an [Activation.](#activation) Item.
+  - [Acquisition example](examples/acquisition.json): Shows the usage of the extension to describe an [Acquisition](#acquisition) Item.
+  - [Call Collection example](examples/call-collection.json): Shows the usage of the extension to describe a [Call](#call) Collection.
+  - [Area example](examples/area.json): Shows the usage of the extension to describe an [Area](#area) Item.
 - [JSON Schema](json-schema/schema.json)
 - [Changelog](./CHANGELOG.md)
 
+## Glossary
+
+This introductory section gives basic defintion of the terms used in the Disasters Charter and thus in this extension. 
+More information about [How the Charter works](https://disasterscharter.org/web/guest/how-the-charter-works).
+
+### Activation
+
+An **Activation** represents a Disaster event for which the Charter has been activated.
+An identifier is issued or recycled to be associated with a [Call](#call) identifier.
+An **Activation** can be therefore linked to one or several [Call(s)](#call).
+
+### Call
+
+When an authorized User submits a request to mobilise the space and associated ground resources
+associated with the Charter members in order to obtain data and information on a major disaster,
+A new **Call** is issued. It is associated to a new or existing [Activation](#activation).
+All related [Acquisitions](#acquisition) shall be associated to the **Call**, not directly the Activation.
+
+### Area
+
+Regions that are affected by the disaster and identified by the parties involded in the CHarter process.
+
+### Acquisition
+
+Acquisition represents a satellite resource provided an Agency in the context of the Disaster.
+It can be an archived product or a planned acquisition.
+Each Acquisition records is associated to a [Call](#call).
+
+### Value Added Product
+
+The Value Added Providers take the data provided by member agencies and interpret this,
+assessing what they see from the satellites and compiling it into **Value Added Products**.
+
 ## Item Properties and Collection Fields
 
-| Field Name           | Type                      | Description |
-| -------------------- | ------------------------- | ----------- |
-| template:new_field   | string                    | **REQUIRED**. Describe the required field... |
-| template:xyz         | [XYZ Object](#xyz-object) | Describe the field... |
-| template:another_one | \[number]                 | Describe the field... |
+| Field Name             | Type      | Description                                                                                                      |
+| ---------------------- | --------- | ---------------------------------------------------------------------------------------------------------------- |
+| disaster:call_ids      | \[int]    | Identifiers of the related [Call(s)](#call)                                                                      |
+| disaster:activation_id | int       | Identifier of the related [Activation](#activation)                                                              |
+| disaster:types         | \[string] | Disaster Types (one of the [category](#disastertypes))                                                           |
+| disaster:class         | string    | Identifier of the object described in the item or collection                                                     |
+| disaster:country       | string    | Related Country identifier based on the ISO-3166 standard. In particular, the Alpha-3 representation. (e.g. BEL) |
+| disaster:regions       | \[string] | Free text list identifying regions                                                                               |
 
 ### Additional Field Information
 
-#### template:new_field
+#### disaster:types
 
-This is a much more detailed description of the field `template:new_field`...
+The `disaster:types` is the commonly used category name to classify the type of disaster.
+Here is the list of accepted types:
 
-### XYZ Object
+| Disaster Type           | Description                                                                                                                                                                                                                                                                                                                              |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cyclone`               | Tropical [cyclones](https://disasterscharter.org/web/guest/disaster-types/-/article/cyclones) are weather phenomena which form over the Indian and south Pacific Oceans ocean through the release of energy generated by evaporation and saturation of water on the ocean's surface.                                                     |
+| `earthquake`            | [Earthquakes](https://disasterscharter.org/web/guest/disaster-types/-/article/earthquakes) occur following the release of energy when tectonic plates move apart. These plates move in currents in the Earth's lithosphere and the edges, which have been mapped to fault lines, sometimes collide.                                      |
+| `fire`                  | [Wildfires](https://disasterscharter.org/web/guest/disaster-types/-/article/fires) occur when vegetated areas are set alight and are particularly common during hot and dry periods. They can occur in forests, grasslands, brush and deserts, and with sufficient wind can rapidly spread.                                              |
+| `flood_large`           | Large [Flooding](https://disasterscharter.org/web/guest/disaster-types/-/article/floods) occurs when bodies of water flow onto land that is normally dry over a period of days on a large area.                                                                                                                                          |
+| `flood_flash`           | Flash [Floods](https://disasterscharter.org/web/guest/disaster-types/-/article/floods) occurs when storms bring large quantities of precipitation in a matter of minutes.                                                                                                                                                                |
+| `ice`                   | [Ice](https://disasterscharter.org/web/guest/disaster-types/-/article/ice) on the surface of water or in compacted snow makes for treacherous conditions and can result in injuries if people slip and fall. Water sources may freeze, cutting off access for residents to clean water or heat.                                          |
+| `snow_hazard`           | [Snow Hazard](https://disasterscharter.org/web/guest/disaster-types/-/article/ice) occurs when temperatures drop below the freezing point, and there is sufficient water in clouds. Snow storms can quickly cause disruption to inhabited areas if the ground temperature is cold enough for the snow to settle.                         |
+| `tsunami`               | Tsunamis are seismic [sea waves](https://disasterscharter.org/web/guest/disaster-types/-/article/ocean-wave) and typically occur as a result of underwater earthquakes or volcanic eruptions.                                                                                                                                            | `landslide` | [Landslides](https://disasterscharter.org/web/guest/disaster-types/-/article/landslides) occur when ground on slopes becomes unstable. The unstable ground collapses and flows down the side of a hill or mountain, and can consist of earth, rocks, mud and any debris which may be caught in its wake. |
+| `storm_hurricane_rural` | Tropical [cyclones](https://disasterscharter.org/web/guest/disaster-types/-/article/cyclones) are weather phenomena which form over the Atlantic and northeast Pacific Oceans through the release of energy generated by evaporation and saturation of water on the ocean's surface. This category affecting urban or rural area.        |
+| `storm_hurricane_urban` | Tropical [cyclones](https://disasterscharter.org/web/guest/disaster-types/-/article/cyclones) are weather phenomena which form over the Atlantic and northeast Pacific Oceans through the release of energy generated by evaporation and saturation of water on the ocean's surface. They are categorized affecting urban or rural area. |
+| `oil_spill`             | [Oil spills](https://disasterscharter.org/web/guest/disaster-types/-/article/oil-spills) occur when petroleum oil is released into the ocean following accidents, such as vessels crashing or damage and problems with oil platforms and drilling.                                                                                       |
+| `volcano`               | [Volcanoes](https://disasterscharter.org/web/guest/disaster-types/-/article/volcanoes) are points in the Earth's crust which have ruptured, allowing lava, ash, rocks and gas to erupt during periods of seismic activity.                                                                                                               |
+| `other`                 | In addition to the most common forms of natural disasters, there are [other types](https://disasterscharter.org/web/guest/disaster-types/-/article/other) of disasters which may benefit from satellite observations.                                                                                                                    |
 
-This is the introduction for the purpose and the content of the XYZ Object...
+#### disaster:class
 
-| Field Name  | Type   | Description |
-| ----------- | ------ | ----------- |
-| x           | number | **REQUIRED**. Describe the required field... |
-| y           | number | **REQUIRED**. Describe the required field... |
-| z           | number | **REQUIRED**. Describe the required field... |
+The `disaster:class` is the commonly used category name to classify the object described in the item or collection.
+Here is the list of suggested types:
+
+- `activation` : [Activation](#activation)
+- `call`: [Call](#call)
+- `area` : [Area](#area)
+- `acquisition` : [Acquisition](#acquisition)
+- `value_added_product` : [Value Added Product](#value-added-product)
 
 ## Relation types
 
 The following types should be used as applicable `rel` types in the
 [Link Object](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#link-object).
 
-| Type                | Description |
-| ------------------- | ----------- |
-| fancy-rel-type      | This link points to a fancy resource. |
+| Type         | Description                                                                                                                                           |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| area         | This link points to an area Item from an activation Item.                                                                                             |
+| derived_from | This link should be used in all [Value Added Product](#value-added-product) to identify one or more [Acquisition(s)](#acquisition) used to create it. |
 
 ## Contributing
 

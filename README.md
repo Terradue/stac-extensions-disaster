@@ -52,7 +52,7 @@ All related [Acquisitions](#acquisition) shall be associated to the **Call**, no
 
 ### Area
 
-Regions that are affected by the disaster and identified by the parties involded in the CHarter process.
+Regions that are affected by the disaster and identified by the parties involved in the Charter process.
 
 ### Acquisition
 
@@ -75,7 +75,7 @@ The fields in the table below can be used in these parts of STAC documents:
 - [x] Collections
 - [x] Item Properties (incl. Summaries in Collections)
 - [ ] Assets (for both Collections and Items, incl. Item Asset Definitions in Collections)
-- [ ] Links
+- [x] Links
 
 | Field Name                 | Type      | Description                                                                                                      |
 | -------------------------- | --------- | ---------------------------------------------------------------------------------------------------------------- |
@@ -121,6 +121,47 @@ Here is the list of suggested types:
 - `area` : [Area](#area)
 - `acquisition` : [Acquisition](#acquisition)
 - `vap` : [Value Added Product](#value-added-product)
+
+#### disaster:resolution_class
+
+The `disaster:resolution_class` is category code to classify the resolution of the `acquisition` item.
+
+- `VLR` : Very Low Resolution
+- `LR` : Low Resolution
+- `MR` : Medium Resolution
+- `HR` : High Resolution
+- `VHR` : Very High Resolution
+
+This nomenclature is proper to the [Disasters Charter](https://disasterscharter.org)
+and is used to classify the resolution of the satellite.
+
+### Other Extensions and Specifications
+
+This extension uses and requires additional fields from other specifications or extensions.
+
+The following specifications are relevant here:
+
+- [STAC Common Metadata](https://github.com/radiantearth/stac-spec/blob/master/item-spec/common-metadata.md)
+- [STAC SAT Extension](https://github.com/stac-extensions/sat)
+
+| Field Name     | Type       | Description                                                                            |
+| -------------- | ---------- | -------------------------------------------------------------------------------------- |
+| platform       | string     | Globally unique satellite identifier as defined in common metadata.                    |
+| instruments    | \[string\] | The instrument identifier as defined in common metadata.                               |
+| datetime       | string     | **REQUIRED**. The disaster or acquisition time As defined in common metadata and STAC. |
+| gsd            | number     | Ground sample distance as defined in common metadata.                                  |
+| sensor_type    | string     | The sensor type. One of `optical` or `radar`                                           |
+| eo:cloud_cover | number     | Cloud cover as defined in the EO extension.                                            |
+
+**Additional REQUIRED fields per `disaster:class`:**
+
+| Field Name     | activation | area | acquisition         | vap                 |
+| -------------- | ---------- | ---- | ------------------- | ------------------- |
+| platform       |            |      | X                   | X (when applicable) |
+| instruments    |            |      | X                   | X (when applicable) |
+| gsd            |            |      | X                   | X (when applicable) |
+| sensor_type    |            |      | X                   | X (when applicable) |
+| eo:cloud_cover |            |      | X (when applicable) | X (when applicable) |
 
 ## Relation types
 

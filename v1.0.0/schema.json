@@ -1,0 +1,232 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://terradue.github.io/disaster/v1.0.0/schema.json#",
+  "title": "Disaster Charter Extension",
+  "description": "STAC Disaster Charter Extension for STAC Items and STAC Collections.",
+  "oneOf": [
+    {
+      "$comment": "This is the schema for STAC Items. Remove this object if this extension only applies to Collections.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/stac_extensions"
+        },
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "properties"
+          ],
+          "properties": {
+            "type": {
+              "const": "Feature"
+            },
+            "properties": {
+              "allOf": [
+                {
+                  "$comment": "Require fields here for Item Properties.",
+                  "required": [
+                    "disaster:class"
+                  ]
+                },
+                {
+                  "$ref": "#/definitions/fields"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "$comment": "This is the schema for STAC Collections.",
+      "type": "object",
+      "allOf": [
+        {
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "const": "Collection"
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/stac_extensions"
+        }
+      ],
+      "anyOf": [
+        {
+          "$comment": "This is the schema for the top-level fields in a Collection. Remove this if this extension does not define top-level fields for Collections.",
+          "allOf": [
+            {
+              "$comment": "Require fields here for Collections (top-level).",
+              "required": [
+                "disaster:class"
+              ]
+            },
+            {
+              "$ref": "#/definitions/fields"
+            }
+          ]
+        },
+        {
+          "$comment": "This is the schema for the fields in Summaries. By default, only checks the existence of the properties, but not the schema of the summaries.",
+          "required": [
+            "summaries"
+          ],
+          "properties": {
+            "summaries": {
+              "$ref": "#/definitions/require_any_field"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "definitions": {
+    "stac_extensions": {
+      "type": "object",
+      "required": [
+        "stac_extensions"
+      ],
+      "properties": {
+        "stac_extensions": {
+          "type": "array",
+          "contains": {
+            "const": "https://terradue.github.io/disaster/v1.0.0/schema.json"
+          }
+        }
+      }
+    },
+    "require_any_field": {
+      "$comment": "Please list all fields here so that we can force the existence of one of them in other parts of the schemas.",
+      "anyOf": [
+        {
+          "required": [
+            "disaster:class"
+          ]
+        },
+        {
+          "required": [
+            "disaster:call_ids"
+          ]
+        },
+        {
+          "required": [
+            "disaster:activation_id"
+          ]
+        },
+        {
+          "required": [
+            "disaster:types"
+          ]
+        },
+        {
+          "required": [
+            "disaster:country"
+          ]
+        },
+        {
+          "required": [
+            "disaster:regions"
+          ]
+        },
+        {
+          "required": [
+            "disaster:activation_status"
+          ]
+        },
+        {
+          "required": [
+            "disaster:disaster:resolution_class"
+          ]
+        }
+      ]
+    },
+    "fields": {
+      "$comment": "Add your new fields here. Don't require them here, do that above in the corresponding schema.",
+      "type": "object",
+      "properties": {
+        "disaster:class": {
+          "type": "string",
+          "enum": [
+            "activation",
+            "area",
+            "acquisition",
+            "vap"
+          ]
+        },
+        "disaster:activation_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "disaster:call_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "disaster:types": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "flood",
+              "fire",
+              "earthquake",
+              "volcano",
+              "storm_hurricane_rural",
+              "storm_hurricane_urban",
+              "flood_large",
+              "flood_flash",
+              "cyclone",
+              "tsunami",
+              "snow_hazard",
+              "landslide",
+              "ice",
+              "oil_spill",
+              "other"
+            ]
+          }
+        },
+        "disaster:country": {
+          "$comment": "ISO 3166-1 alpha-3 country code",
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "disaster:regions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "disaster:activation_status": {
+          "type": "string",
+          "enum": [
+            "open",
+            "closed",
+            "archived"
+          ]
+        },
+        "disaster:resolution_class": {
+          "type": "string",
+          "enum": [
+            "VLR",
+            "LR",
+            "MR",
+            "HR",
+            "VHR"
+          ]
+      }
+      },
+      "patternProperties": {
+        "^(?!disaster:)": {
+          "$comment": "Above, change `disaster` to the prefix of this extension"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

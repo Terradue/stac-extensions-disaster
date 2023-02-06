@@ -79,13 +79,14 @@ The fields in the table below can be used in these parts of STAC documents:
 
 | Field Name                 | Type      | Description                                                                                                      |
 | -------------------------- | --------- | ---------------------------------------------------------------------------------------------------------------- |
+| disaster:class             | string    | **REQUIRED**. Identifier of the object described in the item or collection                                       |
 | disaster:call_ids          | \[int]    | Identifiers of the related [Call(s)](#call)                                                                      |
 | disaster:activation_id     | int       | Identifier of the related [Activation](#activation)                                                              |
 | disaster:types             | \[string] | Disaster Types (one of the [category](#disastertypes))                                                           |
-| disaster:class             | string    | Identifier of the object described in the item or collection                                                     |
 | disaster:country           | string    | Related Country identifier based on the ISO-3166 standard. In particular, the Alpha-3 representation. (e.g. BEL) |
 | disaster:regions           | \[string] | Free text list identifying regions                                                                               |
 | disaster:activation_status | string    | Activation status. One of `open`, `closed`, `archived`.                                                          |
+| disaster:resolution_class  | string    | For Class `acquisition`, One of `VLR`, `LR`, `MR`, `HR`, `VHR`                                                   |
 
 ### Additional Field Information
 
@@ -117,10 +118,9 @@ The `disaster:class` is the commonly used category name to classify the object d
 Here is the list of suggested types:
 
 - `activation` : [Activation](#activation)
-- `call`: [Call](#call)
 - `area` : [Area](#area)
 - `acquisition` : [Acquisition](#acquisition)
-- `value_added_product` : [Value Added Product](#value-added-product)
+- `vap` : [Value Added Product](#value-added-product)
 
 ## Relation types
 

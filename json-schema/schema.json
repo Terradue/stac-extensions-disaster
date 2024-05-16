@@ -171,23 +171,46 @@
         "disaster:types": {
           "type": "array",
           "items": {
-            "type": "string",
-            "enum": [
-              "flood",
-              "fire",
-              "earthquake",
-              "volcano",
-              "storm_hurricane_rural",
-              "storm_hurricane_urban",
-              "flood_large",
-              "flood_flash",
-              "cyclone",
-              "tsunami",
-              "snow_hazard",
-              "landslide",
-              "ice",
-              "oil_spill",
-              "other"
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "flood",
+                  "fire",
+                  "earthquake",
+                  "volcano",
+                  "storm_hurricane_rural",
+                  "storm_hurricane_urban",
+                  "flood_large",
+                  "flood_flash",
+                  "cyclone",
+                  "tsunami",
+                  "snow_hazard",
+                  "landslide",
+                  "ice",
+                  "oil_spill",
+                  "other"
+                ],
+                "deprecated": true
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "fire",
+                  "earthquake",
+                  "volcano",
+                  "storm_hurricane",
+                  "flood",
+                  "cyclone",
+                  "tsunami",
+                  "snow_hazard",
+                  "landslide",
+                  "ice",
+                  "oil_spill",
+                  "explosive_event",
+                  "other"
+                ]
+              }
             ]
           }
         },
@@ -219,7 +242,7 @@
             "HR",
             "VHR"
           ]
-      }
+        }
       },
       "patternProperties": {
         "^(?!disaster:)": {

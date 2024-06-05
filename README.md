@@ -1,7 +1,7 @@
 # Disasters Charter Extension Specification
 
 - **Title:** Disasters Charter
-- **Identifier:** <https://terradue.github.io/stac-extensions-disaster/v1.0.0/schema.json>
+- **Identifier:** <https://terradue.github.io/stac-extensions-disaster/v1.1.0/schema.json>
 - **Field Name Prefix:** disaster
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal

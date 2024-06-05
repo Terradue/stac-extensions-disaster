@@ -10,17 +10,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Disaster types enumeration have been updated ([#3](https://github.com/terradue/disasterscharter/pull/3))
-
 ### Deprecated
 
 ### Removed
 
 ### Fixed
 
+## [1.1.0] - 2024-06-05
+
+### Changed
+
+- Disaster types enumeration have been updated ([#3](https://github.com/terradue/disasterscharter/pull/3))
+
 ## [1.0.0] - 2023-02-06
 
 Initial release of the Disasters Charter extension.
 
-[Unreleased]: <https://github.com/terradue/disasterscharter/compare/v1.0.0...HEAD>
+[Unreleased]: <https://github.com/terradue/disasterscharter/compare/v1.1.0...HEAD>
+[1.1.0]: <https://github.com/terradue/disasterscharter/compare/v1.0.0...v1.1.0>
 [1.0.0]: <https://github.com/terradue/disasterscharter/tree/v1.0.0>

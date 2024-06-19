@@ -5,7 +5,7 @@
 - **Field Name Prefix:** disaster
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
-- **Owner**: @emmanuelmathot
+- **Owner**: @emmanuelmathot @fabricebrito
 
 This document explains the Disasters Charter Extension to the
 [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
